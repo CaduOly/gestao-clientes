@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<div class="container-login">
+  <div class="container-form-login">
+    <header class="header-login">
+      <h2>CADASTRO DE USUÁRIO</h2>
+      <div class="detalhe"></div>
+    </header>
+    <div class="form-login">
+      <form class="flex flex-column gap-3" (submit)="cadastrar()">
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-user"></i>
+          <input
+            type="text"
+            pInputText
+            class="w-full"
+            placeholder="Nome"
+            [(ngModel)]="nome"
+            name="nome"
+          />
+        </span>
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-user"></i>
+          <input
+            type="text"
+            pInputText
+            class="w-full"
+            placeholder="Usuário"
+            [(ngModel)]="usuario"
+            name="usuario"
+          />
+        </span>
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-lock"></i>
+          <input
+            type="password"
+            pInputText
+            class="w-full"
+            placeholder="Senha"
+            [(ngModel)]="senha"
+            name="senha"
+          />
+        </span>
+        <span class="w-full">
+          <button
+            icon="pi pi-check"
+            pButton
+            pRipple
+            label="Cadastrar"
+            class="button-Cadastrar w-full"
+          ></button>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>

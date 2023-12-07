@@ -1,0 +1,256 @@
+<p-toast></p-toast>
+<p-confirmDialog acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+
+<div class="container-cliente">
+  <p-card [style]="{ width: '100%', margin: '60px auto' }">
+    <ng-template pTemplate="header">
+      <div
+        class="headerCard grid p-fluid md:align-items-center md:justify-content-start pl-3 pr-3"
+      >
+        <span class="col-12 md:col-4">
+          <p-button
+            type="button"
+            icon="pi pi-arrow-left"
+            [rounded]="true"
+            [text]="true"
+            routerLink="/clientes"
+          ></p-button>
+        </span>
+        <span class="col-12 md:col-6">
+          <h1 class="tituloCard text-4xl md:text-5xl">{{ title }}</h1>
+        </span>
+      </div>
+    </ng-template>
+    <div class="content-cliente">
+      <form
+        [formGroup]="clienteForm"
+        (ngSubmit)="salvar()"
+        class="grid p-fluid"
+      >
+        <span class="flex fluid flex-column gap-2 col-12 mb-2">
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="nome"
+              formControlName="nome"
+              aria-describedby="name-help"
+              required
+              [class]="
+                clienteForm.get('nome')?.invalid &&
+                clienteForm.get('nome')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            />
+            <label htmlFor="nome">Nome Completo*</label>
+          </span>
+          <small
+            id="name-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('nome')?.invalid &&
+              clienteForm.get('nome')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i> Nome Obrigatório.</small
+          >
+        </span>
+
+        <span class="flex fluid flex-column gap-2 col-12 md:col-6 mb-2">
+          <span class="p-float-label">
+            <p-inputMask
+              mask="999.999.999-99"
+              name="cpf"
+              id="cpf"
+              formControlName="cpf"
+              aria-describedby="cpf-help"
+              [class]="
+                clienteForm.get('cpf')?.invalid &&
+                clienteForm.get('cpf')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            ></p-inputMask>
+            <label htmlFor="cpf">CPF*</label>
+          </span>
+          <small
+            id="cpf-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('cpf')?.invalid && clienteForm.get('cpf')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i> CPF Obrigatório.</small
+          >
+        </span>
+        <span class="flex fluid flex-column gap-2 col-12 md:col-6 mb-2">
+          <span class="p-float-label">
+            <p-inputMask
+              mask="9999999"
+              id="rg"
+              name="rg"
+              formControlName="rg"
+              aria-describedby="rg-help"
+              [class]="
+                clienteForm.get('rg')?.invalid && clienteForm.get('rg')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            ></p-inputMask>
+            <label htmlFor="rg">RG*</label>
+          </span>
+          <small
+            id="rg-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('rg')?.invalid && clienteForm.get('rg')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i> RG Obrigatório.</small
+          >
+        </span>
+
+        <span class="flex fluid flex-column gap-2 col-12 md:col-6 mb-2">
+          <span class="p-float-label">
+            <p-inputMask
+              mask="99/99/9999"
+              id="dataNascimento"
+              name="dataNascimento"
+              formControlName="dataNascimento"
+              aria-describedby="dataNascimento-help"
+              [class]="
+                clienteForm.get('dataNascimento')?.invalid &&
+                clienteForm.get('dataNascimento')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            ></p-inputMask>
+            <label htmlFor="dataNascimento">Data de nascimento*</label>
+          </span>
+          <small
+            id="dataNascimento-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('data_nascimento')?.invalid &&
+              clienteForm.get('data_nascimento')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i>
+            Data de nascimento Obrigatório. Formato aceito dia/mês/ano exemplo
+            21/01/2001</small
+          >
+        </span>
+
+        <span class="flex fluid flex-column gap-2 col-12 md:col-6 mb-2">
+          <span class="p-float-label">
+            <p-inputMask
+              mask="(99) 9 9999-9999"
+              id="telefone"
+              name="telefone"
+              formControlName="telefone"
+              aria-describedby="telefone-help"
+              [class]="
+                clienteForm.get('telefone')?.invalid &&
+                clienteForm.get('telefone')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            ></p-inputMask>
+            <label htmlFor="telefone">Telefone*</label>
+          </span>
+          <small
+            id="telefone-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('telefone')?.invalid &&
+              clienteForm.get('telefone')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i>
+            Telefone Obrigatório.</small
+          >
+        </span>
+
+        <span class="flex fluid flex-column gap-2 col-12 md:col-6 mb-2">
+          <span class="p-float-label">
+            <p-inputMask
+              mask="99.999-999"
+              id="cepConsulta"
+              name="cep"
+              formControlName="cep"
+              aria-describedby="cep-help"
+              [class]="
+                clienteForm.get('cep')?.invalid &&
+                clienteForm.get('cep')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            ></p-inputMask>
+            <label htmlFor="cep">CEP*</label>
+          </span>
+          <small
+            id="cep-help"
+            class="p-error"
+            *ngIf="
+              clienteForm.get('cep')?.invalid && clienteForm.get('cep')?.touched
+            "
+          >
+            <i class="pi pi-exclamation-triangle"></i>
+            CEP Obrigatório.
+          </small>
+        </span>
+        <span class="flex fluid flex-column gap-2 col-12 md:col-3 mb-2">
+          <button type="button" pButton (click)="getCep()">
+            {{ consultarButton }}
+          </button>
+        </span>
+
+        <div formArrayName="enderecos" class="col-12">
+          <div
+            *ngFor="let endereco of enderecos.controls; let i = index"
+            [formGroupName]="i"
+            class="flex fluid flex-column gap-2 col-12 mb-2 p-5 bg-gray-300"
+          >
+            <h3>Confirme seu endereço</h3>
+
+            <label for="logradouro">Logradouro*:</label>
+            <input type="text" formControlName="logradouro" pInputText />
+
+            <label for="numero">Numero:</label>
+            <input type="text" formControlName="numero" pInputText />
+
+            <label for="complemento">Complemento:</label>
+            <input type="text" formControlName="complemento" pInputText />
+
+            <label for="bairro">Bairro*:</label>
+            <input type="text" formControlName="bairro" pInputText />
+
+            <label for="localidade">Localidade*:</label>
+            <input type="text" formControlName="localidade" pInputText />
+
+            <label for="uf">UF*:</label>
+            <input type="text" formControlName="uf" pInputText />
+            <span class="flex fluid flex-column gap-2 col-12 md:col-3 mb-2">
+            </span>
+            <p-button
+              type="button"
+              (click)="removerEndereco(i)"
+              [outlined]="true"
+              severity="danger"
+              label="Remover Endereço"
+            >
+            </p-button>
+          </div>
+          <small id="help">(*) Campos obrigatórios </small>
+        </div>
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Salvar"
+          [disabled]="!clienteForm.valid"
+        ></button>
+      </form>
+    </div>
+  </p-card>
+</div>

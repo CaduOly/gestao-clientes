@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<div class="container-login">
+  <div class="container-form-login">
+    <header class="header-login">
+      <h2>FAZER LOGIN</h2>
+      <div class="detalhe"></div>
+    </header>
+    <div class="form-login">
+      <form class="flex flex-column gap-3" (submit)="entrar()">
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-user"></i>
+          <input
+            type="text"
+            pInputText
+            class="w-full"
+            placeholder="Usuário"
+            [(ngModel)]="usuario"
+            name="usuario"
+          />
+        </span>
+
+        <span class="p-input-icon-left w-full">
+          <i class="pi pi-lock"></i>
+          <input
+            type="password"
+            pInputText
+            class="w-full"
+            placeholder="Senha"
+            [(ngModel)]="senha"
+            name="senha"
+          />
+        </span>
+        <span class="w-full">
+          <button
+            icon="pi pi-sign-in"
+            type="submit"
+            pButton
+            pRipple
+            label="Entrar"
+            class="button-Entrar w-full"
+          ></button>
+        </span>
+        <span class="flex justify-content-center w-full">
+          <p>Se esqueceu a senha entre em contato com a equipe técnica.</p>
+        </span>
+      </form>
+    </div>
+
+    <hr class="w-full" />
+
+    <footer class="footer-login">
+      Usuario Novo? <a href="/cadastro">Cadastre-se</a>
+    </footer>
+  </div>
+</div>

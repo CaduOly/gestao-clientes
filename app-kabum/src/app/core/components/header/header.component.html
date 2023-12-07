@@ -1,0 +1,16 @@
+<header class="container-header">
+  <div class="content-header">
+    <div class="menu-button">
+      <p-button
+        *ngIf="logged"
+        [text]="true"
+        [icon]="showMenu ? 'pi pi-times text-white' : 'pi pi-bars text-white'"
+        (onClick)="handleMenu()"
+      ></p-button>
+    </div>
+    <div class="logo" routerLink="/">
+      <img src="assets/kabum-logo.png" alt="kabum" width="120px" />
+    </div>
+  </div>
+</header>
+<app-menu *ngIf="showMenu" (menuClick)="handleMenu()"></app-menu>

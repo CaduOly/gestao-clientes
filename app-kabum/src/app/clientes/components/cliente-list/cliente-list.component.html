@@ -1,0 +1,125 @@
+<p-toast></p-toast>
+<p-confirmDialog acceptLabel="Sim" rejectLabel="Não"></p-confirmDialog>
+
+<div class="containerCard">
+  <p-card [style]="{ width: '100%', margin: '60px auto' }">
+    <ng-template pTemplate="header">
+      <div
+        class="headerCard grid p-fluid align-items-center justify-content-between pl-3 pr-3"
+      >
+        <span
+          class="col-12 md:col-8 flex justify-content-center md:justify-content-start"
+        >
+          <h1 class="tituloCard">{{ title }}</h1>
+        </span>
+        <span class="col-12 md:col-4">
+          <button
+            pButton
+            pRipple
+            icon="pi pi-plus"
+            label="Novo"
+            class="p-button-success"
+            routerLink="/clientes/novo"
+          ></button>
+        </span>
+      </div>
+    </ng-template>
+
+    <div class="contentCard w-full">
+      <p-table
+        #dt
+        responsiveLayout="stack"
+        [value]="clientes"
+        dataKey="id"
+        [rows]="16"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[8, 16, 32]"
+        [loading]="loading"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['id', 'nome']"
+      >
+        <ng-template pTemplate="caption">
+          <div class="grid p-fluid">
+            <span class="col-12 md:col-3">
+              <button
+                pButton
+                label="Clear"
+                class="p-button-outlined"
+                icon="pi pi-filter-slash"
+                (click)="clear(dt)"
+              ></button>
+            </span>
+            <span class="p-input-icon-left col-12 md:col-9">
+              <i class="pi pi-search"></i>
+              <input
+                pInputText
+                type="text"
+                #filtrado
+                (input)="dt.filterGlobal(filtrado.value, 'contains')"
+                placeholder="Pesquisar..."
+              />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-cliente let-columns>
+          <tr>
+            <th field="id">#</th>
+            <th field="nome">Nome</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Data de Nascimento</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-Cliente let-columns="columns">
+          <tr>
+            <td><span class="p-column-title">#</span>{{ Cliente.id }}</td>
+            <td><span class="p-column-title">Nome</span>{{ Cliente.nome }}</td>
+            <td>
+              <span class="p-column-title">CPF</span>
+              {{ formatarCPF(Cliente.cpf) }}
+            </td>
+            <td class="">
+              <span class="p-column-title">RG</span>
+              {{ Cliente.rg }}
+            </td>
+            <td>
+              <span class="p-column-title">Data de Nascimento</span
+              >{{ Cliente.data_nascimento | date : "dd/MM/YYYY" }}
+            </td>
+            <td>
+              <span class="p-column-title">Telefone</span
+              >{{ formatarTelefone(Cliente.telefone) }}
+            </td>
+
+            <td class="md:flex md:gap-3">
+              <p-button
+                icon="pi pi-pencil"
+                [rounded]="true"
+                [text]="true"
+                severity="help "
+                [routerLink]="['/clientes', Cliente.id]"
+              ></p-button>
+              <p-button
+                icon="pi pi-trash"
+                [rounded]="true"
+                [text]="true"
+                severity="danger "
+                (click)="deletarCliente(Cliente.id)"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="7">Nenhum cliente registrado.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</div>
