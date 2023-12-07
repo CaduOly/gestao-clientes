@@ -1,0 +1,23 @@
+{
+	"name": "cadu/api-kabum",
+	"description": "Descrição do seu projeto",
+	"type": "project",
+	"autoload": {
+		"psr-4": {
+			"App\\": "app/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "phpunit"
+	},
+	"config": {
+		"bin-dir": "bin/"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true
+}
