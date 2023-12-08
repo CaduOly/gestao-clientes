@@ -1,3 +1,6 @@
+SET NAMES 'utf8';
+SET CHARACTER SET utf8;
+
 CREATE SCHEMA IF NOT EXISTS `gestao_clientes`;
 
 USE `gestao_clientes`;
@@ -14,7 +17,7 @@ CREATE TABLE `cliente` (
   `data_nascimento` date NOT NULL,
   `telefone` varchar(15) NOT NULL,
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE `endereco` (
   `id_endereco` int NOT NULL AUTO_INCREMENT,
@@ -29,7 +32,7 @@ CREATE TABLE `endereco` (
   PRIMARY KEY (`id_endereco`),
   KEY `fk_cliente` (`id_cliente`),
   CONSTRAINT `fk_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- INSERT para a tabela 'gestao_clientes.cliente'
 INSERT INTO gestao_clientes.cliente

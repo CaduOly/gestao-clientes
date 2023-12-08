@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'cadu/api-kabum',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '5a41ae2cd6fe5517401e12ce144c63cd5ace8ba4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'cadu/api-kabum' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '5a41ae2cd6fe5517401e12ce144c63cd5ace8ba4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
