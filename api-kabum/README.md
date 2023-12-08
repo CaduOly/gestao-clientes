@@ -37,7 +37,7 @@ Server será iniciado em `http://localhost:8000/`
 Para iniciar os testes usando PHPUnit use o comando:
 
 ```bash
-$ composer test tests/clienteTest
+$ composer test tests/clienteTest.php
 ```
 
 ## Estrutura do projeto
