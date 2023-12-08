@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ClienteTest::testAddCliente":5,"ClienteTest::testGetAllClientes":5},"times":{"ClienteTest::testGetAllClientes":0.003,"ClienteTest::testAddCliente":0.003}}

@@ -1,5 +1,5 @@
 <?php
-class EnderecoModel implements JsonSerializable
+class Endereco implements JsonSerializable
 {
     private $id_endereco;
     private $cep;
@@ -115,7 +115,6 @@ class EnderecoModel implements JsonSerializable
     }
     public function jsonSerialize()
     {
-        // Retorne um array associativo com os dados do endereço que devem ser codificados em JSON
         return [
             'id' => $this->id_endereco,
             'cep' => $this->cep,

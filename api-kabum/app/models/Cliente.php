@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/EnderecoModel.php';
-class ClienteModel implements JsonSerializable
+require_once __DIR__ . '/Endereco.php';
+class Cliente implements JsonSerializable
 {
     private $id_cliente;
     private $nome;
@@ -60,7 +60,7 @@ class ClienteModel implements JsonSerializable
         $this->enderecos = $enderecos;
     }
 
-    public function setEndereco(EnderecoModel $endereco)
+    public function setEndereco(Endereco $endereco)
     {
         $this->enderecos[] = $endereco;
     }

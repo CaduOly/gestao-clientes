@@ -32,6 +32,14 @@ Lembre-se de estar com o banco de dados ativo.
 
 Server será iniciado em `http://localhost:8000/`
 
+## Rodando testes
+
+Para iniciar os testes usando PHPUnit use o comando:
+
+```bash
+$ composer test tests/clienteTest
+```
+
 ## Estrutura do projeto
 
 -   O projeto segue a arquitetura MVC.
@@ -42,8 +50,8 @@ Server será iniciado em `http://localhost:8000/`
 |   |-- /controllers
 |   |   |--clienteController.php
 |   |-- /models
-|   |   |--ClienteModel.php
-|   |   |--EnderecoModel.php
+|   |   |--Cliente.php
+|   |   |--Endereco.php
 |   |-- /repositories
 |   |   |   |--clienteRepository.php
 |   |-- /services

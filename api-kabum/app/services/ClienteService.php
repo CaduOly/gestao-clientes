@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../repositories/ClienteRepository.php';
-require_once __DIR__ . '/../models/ClienteModel.php';
+require_once __DIR__ . '/../models/Cliente.php';
 
 class ClienteService
 {
@@ -21,7 +21,7 @@ class ClienteService
             $endereco = null;
 
             if ($row['id_endereco']) {
-                $endereco = new EnderecoModel(
+                $endereco = new Endereco(
                     $row['cep'],
                     $row['numero'],
                     $row['logradouro'],
@@ -35,7 +35,7 @@ class ClienteService
             }
 
             if (!isset($clientes[$clienteId])) {
-                $clientes[$clienteId] = new ClienteModel(
+                $clientes[$clienteId] = new Cliente(
                     $row['nome'],
                     $row['cpf'],
                     $row['rg'],
@@ -64,11 +64,11 @@ class ClienteService
         }
 
         $enderecos = isset($clienteData['enderecos']) ? $clienteData['enderecos'] : [];
-        $cliente = new ClienteModel($clienteData['nome'], $clienteData['cpf'], $clienteData['rg'], $clienteData['data_nascimento'], $clienteData['telefone'], $enderecos);
+        $cliente = new Cliente($clienteData['nome'], $clienteData['cpf'], $clienteData['rg'], $clienteData['data_nascimento'], $clienteData['telefone'], $enderecos);
         $cliente->setId($clienteData['id_cliente']);
 
         if (!empty($clienteData['cep']) && !empty($clienteData['numero']) && !empty($clienteData['logradouro']) && !empty($clienteData['bairro']) && !empty($clienteData['localidade']) && !empty($clienteData['uf'])) {
-            $endereco = new EnderecoModel($clienteData['cep'], $clienteData['numero'], $clienteData['logradouro'], $clienteData['complemento'], $clienteData['bairro'], $clienteData['localidade'], $clienteData['uf'], $clienteData['id_cliente']);
+            $endereco = new Endereco($clienteData['cep'], $clienteData['numero'], $clienteData['logradouro'], $clienteData['complemento'], $clienteData['bairro'], $clienteData['localidade'], $clienteData['uf'], $clienteData['id_cliente']);
             $endereco->setId($clienteData['id_endereco']);
             $cliente->setEndereco($endereco);
         }
@@ -79,14 +79,14 @@ class ClienteService
 
     public function addCliente($data)
     {
-        $cliente = new ClienteModel($data['nome'], $data['cpf'], $data['rg'], $data['data_nascimento'], $data['telefone'], $data['enderecos']);
+        $cliente = new Cliente($data['nome'], $data['cpf'], $data['rg'], $data['data_nascimento'], $data['telefone'], $data['enderecos']);
         $clienteId = $this->repository->addCliente($cliente);
         $cliente->setId($clienteId);
 
         if (!empty($data['enderecos'])) {
             foreach ($data['enderecos'] as $enderecoData) {
                 if (is_array($enderecoData)) {
-                    $endereco = new EnderecoModel(
+                    $endereco = new Endereco(
                         $enderecoData['cep'],
                         $enderecoData['numero'],
                         $enderecoData['logradouro'],
@@ -106,14 +106,14 @@ class ClienteService
 
     public function updateCliente($id, $data)
     {
-        $cliente = new ClienteModel($data['nome'], $data['cpf'], $data['rg'], $data['data_nascimento'], $data['telefone'], $data['enderecos']);
+        $cliente = new Cliente($data['nome'], $data['cpf'], $data['rg'], $data['data_nascimento'], $data['telefone'], $data['enderecos']);
 
 
         $this->repository->updateCliente($id, $cliente);
         $this->repository->removeEndereco($id);
 
         foreach ($data['enderecos'] as $enderecoData) {
-            $endereco = new EnderecoModel(
+            $endereco = new Endereco(
                 $enderecoData['cep'],
                 $enderecoData['numero'],
                 $enderecoData['logradouro'],

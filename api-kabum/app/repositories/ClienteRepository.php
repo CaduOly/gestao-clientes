@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/../models/ClienteModel.php';
+require_once __DIR__ . '/../models/Cliente.php';
 
 class ClienteRepository
 {
@@ -43,7 +43,7 @@ class ClienteRepository
             $endereco = null;
 
             if ($row['id_endereco']) {
-                $endereco = new EnderecoModel(
+                $endereco = new Endereco(
                     $row['cep'],
                     $row['numero'],
                     $row['logradouro'],
@@ -76,7 +76,7 @@ class ClienteRepository
         return $clienteData ?: null;
     }
 
-    public function addCliente(ClienteModel $cliente)
+    public function addCliente(Cliente $cliente)
     {
         $stmt = $this->pdo->prepare("INSERT INTO cliente (nome, cpf, rg, data_nascimento, telefone) 
                                      VALUES (:nome, :cpf, :rg, :data_nascimento, :telefone)");
@@ -92,7 +92,7 @@ class ClienteRepository
         return $this->pdo->lastInsertId();
     }
 
-    public function insertEndereco(EnderecoModel $endereco)
+    public function insertEndereco(Endereco $endereco)
     {
         $stmt = $this->pdo->prepare("INSERT INTO endereco (cep, numero, logradouro, complemento, bairro, localidade, uf, id_cliente) 
                                      VALUES (:cep, :numero, :logradouro, :complemento, :bairro, :localidade, :uf, :id_cliente)");
@@ -109,7 +109,7 @@ class ClienteRepository
         $stmt->execute();
     }
 
-    public function updateCliente($id, ClienteModel $cliente)
+    public function updateCliente($id, Cliente $cliente)
     {
         $stmt = $this->pdo->prepare("UPDATE cliente SET nome=:nome, cpf=:cpf, rg=:rg, data_nascimento=:data_nascimento, telefone=:telefone WHERE id_cliente = :id");
         $stmt->bindValue(':nome', $cliente->getNome());
@@ -121,7 +121,7 @@ class ClienteRepository
         $stmt->execute();
     }
 
-    public function updateEndereco($id, EnderecoModel $endereco)
+    public function updateEndereco($id, Endereco $endereco)
     {
         $stmt = $this->pdo->prepare("UPDATE endereco SET cep=:cep, numero=:numero, logradouro=:logradouro, complemento=:complemento, bairro=:bairro, localidade=:localidade, uf=:uf WHERE id_endereco = :id");
 
