@@ -1,27 +1,106 @@
-# AppKabum
+# App KaBuM
 
-Esse projeto was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
+Front-end de um aplicativo de gerenciamento de clientes em Angular.
 
-## Development server
+## Rodando localmente
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clone o projeto
 
-## Code scaffolding
+```bash
+  git clone https://github.com/CaduOly/gestao-clientes.git
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Entre no diretório do projeto
 
-## Build
+```bash
+  cd gestao-cliente/app-kabum
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Instale as dependências
 
-## Running unit tests
+```bash
+  npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Inicie o servidor
 
-## Running end-to-end tests
+```bash
+  ng serve
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Será iniciado em `http://localhost:4200/`
 
-## Further help
+## Sobre o projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Tecnologias e versões:
+
+- Angular: 16.2.12;
+- PrimeNG: 16.9.1;
+- PrimeFlex: 3.3.1;
+- PrimeIcons: 6.0.1;
+
+## Estrutura do projeto
+
+- O projeto segue uma organização modular.
+
+```plaintext
+/src
+|-- /app
+|   |-- /clientes
+|   |   |-- /components
+|   |   |   |--/cliente
+|   |   |   |--/cliente-list
+|   |   |-- /models
+|   |   |   |--cliente.ts
+|   |   |   |--endereco.ts
+|   |   |-- /service
+|   |   |   |--cliente.service.ts
+|   |   |-- cliente-routing.module.ts
+|   |   |-- cliente.module.ts
+|   |-- /core
+|   |   |-- /auth
+|   |   |   |--auth.service.ts
+|   |   |-- /components
+|   |   |   |--/header
+|   |   |   |--/menu
+|   |   |-- /guards
+|   |   |   |--auth.guard.ts
+|   |   |-- core.module.ts
+|   |-- /login
+|   |   |-- /components
+|   |   |   |--login.component.css
+|   |   |   |--login.component.html
+|   |   |   |--login.component.ts
+|   |   |-- /service
+|   |   |   |--login.service.ts
+|   |   |-- login-routing.module.ts
+|   |   |-- login.module.ts
+|   |-- /usuario
+|   |   |-- /components
+|   |   |   |--usuario.component.css
+|   |   |   |--usuario.component.html
+|   |   |   |--usuario.component.ts
+|   |   |-- /service
+|   |   |   |--usuario.service.css
+|   |   |-- usuario-routing.module.ts
+|   |   |-- usuario.module.ts
+|   |-- app-routing.module.ts
+|   |-- app.component.css
+|   |-- app.component.html
+|   |-- app.component.ts
+|   |-- app.module.ts
+|
+|-- /assets
+|
+|-- /environments
+|   |-- environment.ts
+|   |-- environment.prod.ts
+|-- /...
+```
+
+## Autores
+
+- [@caduoly](https://www.github.com/caduoly)
+
+TODOS OS DIREITOS DE IMAGENS E LAYOUTS SÃO DE PROPRIEDADE DA KABUM E DE SUA
+EQUIPE.
