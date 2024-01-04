@@ -19,7 +19,7 @@ Entre no diretório do projeto
 Instale as dependências
 
 ```bash
- compose install
+ composer install
 ```
 
 Inicie o servidor
