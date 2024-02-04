@@ -11,5 +11,5 @@ O projeto tem três diretórios principais:
 Em cada diretório tem um README com instruções e passos para iniciar cada parte
 da aplicação.
 
-TODOS OS DIREITOS DE IMAGENS E LAYOUTS SÃO DE PROPRIEDADE DA KABUM E DE SUA
+TODOS OS DIREITOS DE IMAGENS E LAYOUTS SÃO DE PROPRIEDADE DO KABUM E DE SUA
 EQUIPE.
